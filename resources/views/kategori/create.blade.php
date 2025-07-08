@@ -8,7 +8,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="deskripsi" class="form-label">Deskripsi</label>
+        <label for="deskripsi" class="form-label">Deskripsi (opsiional)</label>
         <textarea name="deskripsi" id="deskripsi" class="form-control" rows="3">{{ old('deskripsi') }}</textarea>
     </div>
 
