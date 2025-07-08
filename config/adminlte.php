@@ -340,7 +340,7 @@ return [
         ],
         ['header' => 'email'],
         [
-            'text' => 'email',
+            'text' => 'email top 5 produk',
             'url' => '/email',
             'icon' => 'fas fa-fw fa-envelope',
         ],

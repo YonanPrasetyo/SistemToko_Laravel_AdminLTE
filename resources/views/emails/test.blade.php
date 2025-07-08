@@ -18,8 +18,28 @@
 
             <p><strong>Pesan:</strong></p>
             <p style="background-color: #f1f1f1; padding: 10px; border-left: 4px solid #007bff;">
-                {{ $data['pesan'] ?? 'halo saya yonan dari yonan store.' }}
+                {{ "top 5 produk yonan store dalam 30  hari terakhir" }}
             </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>ID produk</th>
+                        <th>nama produk</th>
+                        <th>total terjual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($top5produk as $produk)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $produk->id_produk }}</td>
+                            <td>{{ $produk->nama_produk }}</td>
+                            <td>{{ $produk->total_terjual }}</td>
+                    @endforeach
+                </tbody>
+            </table>
 
             <p>Terima kasih telah menggunakan layanan kami.</p>
 

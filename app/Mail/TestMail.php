@@ -10,16 +10,18 @@ class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $messageText;
+    public $top5produk;
 
-    public function __construct($messageText)
+    public function __construct($top5produk)
     {
-        $this->messageText = $messageText;
+        $this->top5produk = $top5produk;
     }
 
     public function build()
     {
         return $this->subject('Test Email from Laravel')
-            ->view('emails.test');
+            ->view('emails.test', [
+                'top5produk' => $this->top5produk
+            ]);
     }
 }

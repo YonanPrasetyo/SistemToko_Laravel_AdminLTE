@@ -7,6 +7,7 @@ use App\Http\Controllers\konsumenController;
 use App\Http\Controllers\transaksiController;
 use App\Http\Controllers\detailTransaksiController;
 use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\emailController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -39,14 +40,5 @@ Route::post('/detail-transaksi', [detailTransaksiController::class, 'store'])->n
 Route::put('/detail-transaksi/{id}', [detailTransaksiController::class, 'update'])->name('detail-transaksi.update');
 Route::delete('/detail-transaksi/{id}', [detailTransaksiController::class, 'destroy'])->name('detail-transaksi.destroy');
 
-Route::get('email', function () {
-    $details = 'Halo, ini pesan dari aplikasi sistem toko.';
-    Mail::to('yonanprasetyo91792@gmail.com')->send(new TestMail($details));
+Route::get('email', [emailController::class, 'sendEmail'])->name('email.send');
 
-    return redirect()->back()->with('success', 'Email berhasil dikirim');
-});
-
-// 404
-Route::fallback(function () {
-    return view('errors.404');
-});
