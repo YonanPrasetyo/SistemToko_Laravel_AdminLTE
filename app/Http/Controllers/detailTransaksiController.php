@@ -30,15 +30,19 @@ class detailTransaksiController extends Controller
                 'total' => $total
             ]);
 
+            // stok untuk tabel produk
+            $produk = Produk::find($validate['id_produk']);
+            if ($produk->stok < $validate['jumlah']) {
+                return redirect()->back()->with('error', 'Stok produk tidak mencukupi');
+            }
+            $produk->stok = $produk->stok - $validate['jumlah'];
+            $produk->save();
+
             // total dan stok untuk tabel transaksi
             $transaksi = Transaksi::find($validate['id_transaksi']);
             $transaksi->total = $transaksi->total + $total;
             $transaksi->save();
 
-            // stok untuk tabel produk
-            $produk = Produk::find($validate['id_produk']);
-            $produk->stok = $produk->stok - $validate['jumlah'];
-            $produk->save();
 
             return redirect('/transaksi/' . $validate['id_transaksi'])->with('success', 'Detail Transaksi berhasil ditambahkan');
         }catch (Exception $e) {

@@ -38,7 +38,6 @@
                 <strong>Gagal!</strong>
                 <div class="mt-1">{{ session('error') }}</div>
             </div>
-            <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
 @endif
